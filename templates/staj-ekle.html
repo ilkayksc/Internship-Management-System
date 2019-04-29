@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Karadeniz Teknik Üniversitesi-Staj Yönetim Sistemi</title>
+
+  <!-- Favicons -->
+  <link href="../static/img/favicon.png" rel="icon">
+  <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="../static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="../static/css/style.css" rel="stylesheet">
+  <link href="../static/css/style-responsive.css" rel="stylesheet">
+  
+  <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+
+
+</head>
+
+<body>
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="index.html" class="logo"><b>KT<span>Ü</span></b></a>
+      <!--logo end-->
+      <div class="nav notify-row" id="top_menu">
+        <!--  notification start -->
+        
+        
+        <!--  notification end -->
+      </div>
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="login.html">Çıkış</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="profile.html"><img src="../static/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <h5 class="centered">Sam Soffes</h5>
+          <li class="mt">
+            <a href="index.html">
+              <i class="fa fa-dashboard"></i>
+              <span>Anasayfa</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-desktop"></i>
+              <span>Öğrenci</span>
+              </a>
+            <ul class="sub">
+              <li><a href="general.html">General</a></li>
+              
+            </ul>
+          </li>
+          
+          
+
+          
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper site-min-height">
+        <h3> Staj Ekle</h3>
+        
+        <div><a href="dgs-staj-ekle"><div class="col-md-12" align ="right" style="padding-top: 25px;padding-right: 500px;padding-bottom:20px;"><button width="80" class="btn btn-success ">DGS veya YATAY GEÇİŞLİ ÖĞRENCİ</button></div></a>
+        <div class="row mt">
+        
+          <div class="col-lg-12">
+            
+
+
+            <form action="/stajekleme" method="POST"  id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                      
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Öğrenci Seç</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="ogrenci_numara">
+                              {% for item in result %}
+                              <option value="{{item.ogrenci_numara}}">{{item.ogrenci_numara}}-&nbsp;{{item.ogrenci_isim}} &nbsp;{{item.ogrenci_soyisim}}</option>
+                              {% endfor %}
+                      
+                          
+                              {% for dgs in dgs_ogrenci %}
+                              <option value="{{dgs.ogrenci_numara}}">{{dgs.ogrenci_numara}}-&nbsp;{{dgs.ogrenci_isim}} &nbsp;{{dgs.ogrenci_soyisim}}</option>
+                              {% endfor %}
+                              </select>
+
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Stajın Başlama Tarihi <span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="first-name" name="staj_baslama_tarihi" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen Öğrenci Numarasını  Giriniz.">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Staj Bitiş Tarihi <span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="first-name" name="staj_bitis_tarihi" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen Öğrenci Numarasını  Giriniz.">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Mülakat Tarihi <span class="required"></span>
+                        </label>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <input type="date" id="first-name" name="mulakat_tarih" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen Kurum İsmini Giriniz.">
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <input type="time" id="first-name" name="mulakat_saat" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen Kurum İsmini Giriniz.">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Komisyon Üyesi</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="komisyon_uye_1">
+                              {% for akademisyen in komisyon %}
+                              <option value="{{akademisyen.komisyon_numara}}">{{akademisyen.komisyon_isim}}&nbsp;{{akademisyen.komisyon_soyisim}}</option>
+                        {% endfor %}
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Komisyon Üyesi</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="komisyon_uye_2">
+                        {% for akademisyen in komisyon %}
+                              <option value="{{akademisyen.komisyon_numara}}">{{akademisyen.komisyon_isim}} &nbsp;{{akademisyen.komisyon_soyisim}} </option>
+                        {% endfor %}
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+
+                      <br>
+<br>
+<br>
+<br>
+
+                      <div class="form-group">
+                        <label style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Staj Yapılan Kurum <span class="required"></span>
+                        </label>
+
+                       
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <select class="form-control" name="staj_kurum">
+                          <option value="0">Listeden Seçiniz </option>
+                        {% for kurumlar in staj_kurum %}
+                              <option value="{{kurumlar.kurum_isim}}">{{kurumlar.kurum_isim}}</option>
+                        {% endfor %}
+                              
+                              
+                          </select>
+                        
+                      </div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-left:20px;">
+  Ekle
+</button>
+                        <input type="hidden" class="hidden"/>
+                       <!-- <div class="col-md-6 col-sm-6 col-xs-12"> 
+                          <input type="text" id="first-name" name="staj_kurum" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen Kurum İsmini Giriniz.">
+                        </div>-->
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Staj Yaptığı Şehir</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="staj_sehir">
+                              <option value="Adana">Adana</option>
+                              <option value="Adiyaman">Adıyaman</option>
+                              <option value="Afyon">Afyon</option>
+                              <option value="Agrı">Ağrı</option>
+                              <option value="Amasya">Amasya</option>
+                              <option value="Ankara">Ankara</option>
+                              <option value="Antalya">Antalya</option>
+                              <option value="Artvin">Artvin</option>
+                              <option value="Aydin">Aydın</option>
+                              <option value="Balikesir">Balıkesir</option>
+                              <option value="Bilecik">Bilecik</option>
+                              <option value="Bingöl">Bingöl</option>
+                              <option value="Bitlis">Bitlis</option>
+                              <option value="Bolu">Bolu</option>
+                              <option value="Burdur">Burdur</option>
+                              <option value="Bursa">Bursa</option>
+                              <option value="Çanakkale">Çanakkale</option>
+                              <option value="Çankırı">Çankırı</option>
+                              <option value="Çorum">Çorum</option>
+                              <option value="Denizli">Denizli </option>
+                              <option value="Diyarbakır">Diyarbakır</option>
+                              <option value="Edirne">Edirne </option>
+                              <option value="Elazıg">Elazığ</option>
+                              <option value="Erzincan">Erzincan </option>
+                              <option value="Erzurum">Erzurum </option>
+                              <option value="Eskişehir">Eskişehir </option>
+                              <option value="Gaziantep">Gaziantep </option>
+                              <option value="Giresun">Giresun</option>
+                              <option value="Gümüşhane">Gümüşhane </option>
+                              <option value="Hakkari">Hakkari </option>
+                              <option value="Hatay">Hatay </option>
+                              <option value="İsparta">Isparta </option>
+                              <option value="Mersin">Mersin </option>
+                              <option value="İstanbul">Istanbul </option>
+                              <option value="İzmir">İzmir </option>
+                              <option value="Kars">Kars </option>
+                              <option value="Kastamonu">Kastamonu </option>
+                              <option value="Kayseri">Kayseri </option>
+                              <option value="Kirklareli">Kırklareli </option>
+                              <option value="Kirşehir">Kırşehir </option>
+                              <option value="Kocaeli">Kocaeli </option>
+                              <option value="Konya">Konya </option>
+                              <option value="Kütahya">Kütahya </option>
+                              <option value="Malatya">Malatya </option>
+                              <option value="Manisa">Manisa </option>
+                              <option value="KahramanMaraş">KahramanMaraş </option>
+                              <option value="Mardin">Mardin </option>
+                              <option value="Mugla">Muğla </option>
+                              <option value="Muş">Muş </option>
+                              <option value="Nevşehir">Nevşehir </option>
+                              <option value="Niğde">Niğde </option>
+                              <option value="Ordu">Ordu </option>
+                              <option value="Rize">Rize </option>
+                              <option value="Sakarya">Sakarya </option>
+                              <option value="Samsun">Samsun </option>
+                              <option value="Siirt">Siirt </option>
+                              <option value="Sinop">Sinop </option>
+                              <option value="Sivas">Sivas </option>
+                              <option value="Tekirdag">Tekirdağ </option>
+                              <option value="Tokat">Tokat</option>
+                              <option value="Trabzon">Trabzon </option>
+                              <option value="Tunceli">Tunceli </option>
+                              <option value="Şanliurfa">Şanlıurfa </option>
+                              <option value="Uşak">Uşak </option>
+                              <option value="Van">Van </option>
+                              <option value="Yozgat">Yozgat </option>
+                              <option value="Zonguldak">Zonguldak </option>
+                              <option value="Aksaray">Aksaray </option>
+                              <option value="Bayburt">Bayburt</option>
+                              <option value="Karaman">Karaman </option>
+                              <option value="Kirikkale">Kırıkkale </option>
+                              <option value="Batman">Batman </option>
+                              <option value="Şirnak">Şırnak </option>
+                              <option value="Bartin">Bartın </option>
+                              <option value="Ardahan">Ardahan </option>
+                              <option value="Iğdır">Iğdır </option>
+                              <option value="Yalova">Yalova </option>
+                              <option value="Karabük">Karabük </option>
+                              <option value="Kilis">Kilis </option>
+                              <option value="Osmaniye">Osmaniye </option>
+                              <option value="Duzce">Düzce </option>
+                              
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+                                  
+                      <div class="form-group">
+                        <label style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Stajın Konusu <span class="required"></span>
+                        </label>
+
+                       
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <select class="form-control" name="staj_konu">
+                          <option value="0">Listeden Seçiniz </option>
+                        {% for konular in staj_konu %}
+                              <option value="{{konular.konu_isim}}">{{konular.konu_isim}}</option>
+                        {% endfor %}
+                              
+                              
+                          </select>
+                        
+                      </div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#konu" style="margin-left:20px;">
+  Ekle
+</button></div>
+                      <div class="form-group">
+                        <label style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Staj Yapılan Toplam Gün Sayısı <span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="first-name" name="staj_toplam_gun" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen toplam staj günü Giriniz.">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Sınıf</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="staj_sinif">
+                             
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+                     <br>
+<br>
+<br>
+<br>
+                       
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Mülakat Kontrol</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="mulakat_kontrol">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+
+                      
+
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Devam</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="devam">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Çaba Ve Çalışma</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="caba_ve_calisma">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Verilen İşi Vaktinde Yapma</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="isi_vaktinde_yapma">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Amire Karşı Davranış</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="amire_karsi_davranis">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">İş Arkadaşına davranışı</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="is_arkadasina_karsi_davranis">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              
+                              
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Proje</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          
+                             <input type="number" id="first-name" name="proje" required="" class="form-control col-md-7 col-xs-12" >
+                              
+                              
+                          
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Düzen</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          
+                              <input type="number" id="first-name" name="duzen" required="" class="form-control col-md-7 col-xs-12" >
+                              
+                              
+                          
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Sunum</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                         
+                              <input type="number" id="first-name" name="sunum" required="" class="form-control col-md-7 col-xs-12">
+                              
+
+                              
+                              
+                        
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">İçerik</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                         
+                             <input type="number" id="first-name" name="icerik" required="" class="form-control col-md-7 col-xs-12" >
+                              
+                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Mülakat</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          
+                              <input type="number" id="first-name" name="mulakat" required="" class="form-control col-md-7 col-xs-12" >
+                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kabul Edilen Gün <span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="first-name" name="staj_kabul_edilen_gun" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen Kabul Edilen Gün Sayısını Giriniz.">
+                        </div>
+                      </div>
+
+                     
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          
+                          <button type="submit" class="btn btn-success" name="stajekle">Kaydet</button>
+                        </div>
+                      </div>
+
+                    </form>
+
+          </div>
+        </div>
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+      <div class="text-center">
+        <p>
+          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+        </p>
+        <div class="credits">
+          <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+        </div>
+        <a href="blank.html#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+ 
+  <script src="../static/lib/jquery/jquery.min.js"></script>
+  <script src="../static/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script src="../static/lib/jquery.ui.touch-punch.min.js"></script>
+  <script class="include" type="text/javascript" src="../static/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="../static/lib/jquery.scrollTo.min.js"></script>
+  <script src="../static/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <!--common script for all pages-->
+  <script src="../static/lib/common-scripts.js"></script>
+  <!--script for this page-->
+  <!-- BOOTSTRAP MODAL -->
+
+
+<div class="modal fade" id="konu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+       
+<div class="col-md-12">
+<label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Konular</label>
+<br>        <!-- Bu kısmı tamamla seçileni gönder -->
+               
+                          
+                          <form action="/konuekleme" method="POST"  id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                          <div class="addField">
+                          <br>
+                          <input type="text" id="first" name="konu_isim" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen Konu İsmini Giriniz.">
+                          <br>
+                          <br>
+                          <br>
+                          
+                          <button type="submit" class="btn btn-success" name="konukle" onclick="myFunction()">Kaydet</button>
+                         
+               
+<br>
+                          </div>
+                          </form>
+                          
+<br>
+<br>
+</div>
+      </div>
+
+
+ 
+
+
+
+      <div class="modal-footer" style="border:0">
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+       
+<div class="col-md-12">
+<label for="middle-name" style="color: #22242a; font-size: 19px;" class="control-label col-md-3 col-sm-3 col-xs-12">Kurumlar</label>
+<br>        <!-- Bu kısmı tamamla seçileni gönder -->
+               
+                          
+                          <form action="/kurumekleme" method="POST"  id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                          <div class="addField">
+                          <br>
+                          <input type="text" id="first" name="kurum_adi" required="" class="form-control col-md-7 col-xs-12" placeholder="Lütfen Kurum İsmini Giriniz.">
+                          <br>
+                          <br>
+                          <br>
+                          
+                          
+                          <button type="submit" class="btn btn-success" name="kurumekle" onclick="myFunction()">Kaydet</button>
+                         
+               
+<br>
+                          </div>
+                          </form>
+                          
+<br>
+<br>
+</div>
+      </div>
+
+
+ 
+
+
+
+      <div class="modal-footer" style="border:0">
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+function myFunction() {
+  location.reload();
+}
+</script>
+
+</html>
+
+
+
+
